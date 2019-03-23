@@ -1,0 +1,75 @@
+<style>
+.midcenter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+</style>
+<style>
+body {
+    overflow: scroll;
+}
+</style>
+
+
+Developing Data Products week 4
+========================================================
+author: Raghu
+date: 23March2019
+autosize: true
+
+
+Factors in Determining Fuel-Efficiency
+========================================================
+
+- Engine horsepower
+- Vehicle weight
+- Transmission type
+- Engine Displacement
+- and more.
+
+
+Vehicle Data
+
+The `mtcars` dataset provides us with some fairly rich
+data to explore:
+
+```{r, out.width="100%", out.height="100%"}
+summary(mtcars)
+```
+
+
+Visualizing the Data
+========================================================
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(mtcars, aes(x=mpg, y=wt, shape=as.factor(cyl), color=disp)) +
+  geom_point(size=3) +
+  ggtitle("Mileage vs. Weight, Cylinders & Displacement")
+```
+
+
+What's The Biggest Impact?
+========================================================
+
+```{r, out.width="100%", out.height="100%"}
+fit <- lm(mpg ~ wt + cyl + disp + hp, data = mtcars)
+summary(fit)
+```
+
+From this regression we can see that vehicle weight (`wt`)
+has the biggest impact on fuel-efficiency.
+
+
+Links
+========================================================
+
+The Shiny application is available in:
+
+https://raghu-7.shinyapps.io/myApp/
+
+
+The ui.R and server.R codes are available in:
+
+https://github.com/Raghu-7/Developing-Data-Products
